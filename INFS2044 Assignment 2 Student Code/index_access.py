@@ -21,3 +21,15 @@ class IndexAccess:
                 sorted_entries.append(entry) # Add to the end
             
         return sorted_entries # Return the sorted list
+    
+    def find_by_labels(self, all_labels, labels): # Find entries by label
+        result = [] # List of matching entries
+        for entry in self.entries:
+            if all_labels:
+                if all(label in entry.labels for label in labels): # Match all
+                    result.append(entry)
+            
+            else:
+                if any(label in entry.labels for label in labels): # Match any
+                    result.append(entry)
+        return result # Return result
