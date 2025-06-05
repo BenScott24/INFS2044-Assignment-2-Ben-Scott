@@ -19,3 +19,6 @@ class ImageIndex:
         for path, labels in self.index.items(): # Loop through all indexed images
             if all_mode and all(label in labels for label in query_labels): # Match all labels
                 matches[path] = labels
+            elif not all_mode and any(label in labels for label in query_labels): # Match any label
+                matches[path] = labels
+        return matches # Return matching images
