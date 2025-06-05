@@ -51,6 +51,13 @@ def similar(image_path, k): # Similar image search
         vec = np.array(encode_labels(labels_found)) # Encode labels from entry
         score = cosine_similarity([vector], [vec])[0][0] # Compute similarity
         sims.append((score, path)) # Store result
+
+    sims.sort(reverse=True) # Sort by score descending
+    if k: # If k is given
+        sims = sims[:k] # Get top-k
+    
+    for score, path in sims: # Print results
+        print(f"{score:} {path}")
     
 
 @main.command()
