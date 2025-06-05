@@ -20,11 +20,14 @@ def add(image_path): # Function to add image
     index.add_image(image_path, labels) # Add image to index
     print("Detected objects " + ",".join(labels)) # Output labels
 
-@main.command()
-@click.option('--all/--some', default=True, show_default=True, help='List images that match all/some query terms')
-@click.argument('terms', nargs=-1, required=True)
-def search(all, terms):
-    pass
+@main.command() # Define 'search' command
+@click.argument("labels", nargs=-1) # Accept multiple labels
+@click.option("--all", "all_mode", is_flag = True, help="All labels must match") # Match all
+@click.option("--some", "some_mode", is_flag = True, help="At least one label must match") # Match some
+def search(labels, all_mode, some_mode): # Search function
+    if not all_mode and not some_mode: # Ensure mode is selected
+        print("Use either --all or --some") # Print message
+        return
 
 
 @main.command()
