@@ -6,9 +6,9 @@ from sklearn.metrics.pairwise import cosine_similarity # Import cosine similarit
 from image_index import ImageIndex # Import image index 
 
 
-@click.group() 
+@click.group() # Define a group of CLI commands
 def main():
-    pass
+    pass # Do nothing (placeholder)
 
 
 @main.command()
