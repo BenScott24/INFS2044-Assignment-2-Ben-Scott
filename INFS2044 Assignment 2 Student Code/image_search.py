@@ -60,10 +60,13 @@ def similar(image_path, k): # Similar image search
         print(f"{score:} {path}")
     
 
-@main.command()
-def list():
-    pass
+@main.command() # Defines 'list' command
+def list(): # List all images
+    index = ImageIndex() # Load index
+    entries = index.get_all() # Get entries
+    for path, labels in entries.items(): # Print entries
+        print(f"{path}: {','.join(labels)}")
+    print(f"{len(entries)} images found.") # Print count
 
-
-if __name__ == '__main__':
-    main()
+if __name__ == '__main__': # If this is the main script
+    main() # Run main
