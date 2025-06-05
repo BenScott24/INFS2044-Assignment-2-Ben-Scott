@@ -15,4 +15,6 @@ class MatchingEngine:
         
         scores.sort(key=get_similarity_score, reverse=True) # Sort descending
 
-        
+        if k is None: # If no k specified
+            return scores # Return all
+        return scores[:k] # Return top k
