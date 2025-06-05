@@ -10,3 +10,6 @@ class ImageIndex:
     def add_image(self, path, labels): # Add image and its label to index
         self.index[path] = list(labels) # Store labels as a list
         self.save() # Save the updated index to the file
+    
+    def get_all(self): # Return the entire index
+        return self.index
