@@ -31,6 +31,9 @@ def search(labels, all_mode, some_mode): # Search function
     all_mode = all_mode or not some_mode # Default to all if not specified
     index = ImageIndex() # Load index
     results = index.search(all_mode, labels) # Search for matches
+    for path, labels_found in results.items(): # Print results
+        print(f"{path}: {','.join(labels_found)}")
+    print(f"{len(results)} matches found.") # Show number of matches
 
 
 @main.command()
