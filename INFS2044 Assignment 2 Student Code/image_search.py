@@ -36,11 +36,16 @@ def search(labels, all_mode, some_mode): # Search function
     print(f"{len(results)} matches found.") # Show number of matches
 
 
-@main.command()
-@click.option('--k', default=None, type=click.IntRange(1), show_default=True, help='Number of matches to return')
-@click.argument('image_path', type=click.Path(exists=True, dir_okay=False))
-def similar(k, image_path):
-    pass
+@main.command() # Define 'similar' command
+@click.argument('image_path', type=click.Path(exists=True)) # Accept path
+@click.option('--k', type=int, default=None, help="Top K similar images") # Optional limit
+def similar(image_path, k): # Similar image search
+    image = mpimg.imread(image_path) # Load image
+    labels = detect_objects(image) # Detect labels
+    vector =  np.array(encode_labels(labels)) # Encode labels
+    index = ImageIndex() # Load index
+    entries = index.get_all() # Get all entries
+    
 
 @main.command()
 def list():
