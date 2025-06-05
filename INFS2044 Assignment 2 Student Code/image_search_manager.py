@@ -20,3 +20,7 @@ class ImageSearchManager:
     
     def search(self, all_mode, labels): # Search index for images
         return self.index.find_by_labels(all_mode, labels) # Return matching entries
+    
+    def similar(self, image_path, k=None): # Find similar images
+        image = self.access.load_image(image_path) # Load image
+        labels = self.detector.detect_objects(image) # Detect labels
