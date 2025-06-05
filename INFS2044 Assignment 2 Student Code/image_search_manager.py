@@ -14,3 +14,6 @@ class ImageSearchManager:
         image = self.access.load_image(path) # Load image from file
         labels = self.detector.detect_objects(image) # Detect objects in image
         vector = self.detector.encode_labels(labels) # Convert labels into a vector
+        entry = ImageEntry(path, labels, vector) # Create new image entry
+        self.index.add_entry(entry) # Add entry to index
+        print("Detected objects " + ",".join(sorted(labels))) # Print detected objects
