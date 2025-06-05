@@ -6,5 +6,7 @@ class ImageIndex:
         self.filename = filename # Store the filename for saving/loading
         self.index = {} # Dictionary to hold image paths and labels
         self.load() # Load data from file if available
-        
-        
+
+    def add_image(self, path, labels): # Add image and its label to index
+        self.index[path] = list(labels) # Store labels as a list
+        self.save() # Save the updated index to the file
