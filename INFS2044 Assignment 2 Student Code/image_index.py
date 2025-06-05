@@ -13,3 +13,9 @@ class ImageIndex:
     
     def get_all(self): # Return the entire index
         return self.index
+    
+    def search(self, all_mode, query_labels): # Search for images by labels
+        matches = {} # Dictionary to store matching results
+        for path, labels in self.index.items(): # Loop through all indexed images
+            if all_mode and all(label in labels for label in query_labels): # Match all labels
+                matches[path] = labels
