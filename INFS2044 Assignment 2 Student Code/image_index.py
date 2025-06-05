@@ -22,3 +22,8 @@ class ImageIndex:
             elif not all_mode and any(label in labels for label in query_labels): # Match any label
                 matches[path] = labels
         return matches # Return matching images
+    
+    def load(self): # Load index from file
+        if os.path.exists(self.filename): # Check if file exists
+            with open(self.filename, "r") as f:
+                self.index = json.load(f) # Load the JSON content into dictionary
