@@ -24,3 +24,6 @@ class ImageSearchManager:
     def similar(self, image_path, k=None): # Find similar images
         image = self.access.load_image(image_path) # Load image
         labels = self.detector.detect_objects(image) # Detect labels
+        vector = self.detector.encode_labels(labels) # Encode labels
+        matcher = MatchingEngine(self.index.get_all()) # Create matcher with all entries
+        return matcher.find_similar(vector, k) # Return similar images
