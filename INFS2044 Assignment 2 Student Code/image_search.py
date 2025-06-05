@@ -1,15 +1,15 @@
-import click
+import click # Import click for CLI 
+import matplotlib.image as mpimg # Import image loading
+import numpy as np # Import numpy for vector operations
+from object_detector import detect_objects, encode_labels # Import detection functions
+from sklearn.metrics.pairwise import cosine_similarity # Import cosine similarity
+from image_index import ImageIndex # Import image index 
 
 
-@click.group()
+@click.group() 
 def main():
     pass
 
-#
-# Each of the functions below is the entry point of a use case for the command line application.
-# Call your code from each of these functions, but do not include all of your code in the functions
-# in this file.
-#
 
 @main.command()
 @click.argument('image_path', type=click.Path(exists=True, dir_okay=False))
