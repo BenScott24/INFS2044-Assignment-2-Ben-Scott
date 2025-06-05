@@ -8,4 +8,7 @@ class IndexAccess:
                 return # Skip if duplicate
         self.entries.append(entry) # Add new entry
 
-    
+    def get_all(self): # Get all entries, sorted by path
+        sorted_entries = [] # New list for sorted entries
+        for entry in self.entries: # Loop through unsorted entries
+            inserted =  False # Track if inserted
