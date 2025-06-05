@@ -46,6 +46,12 @@ def similar(image_path, k): # Similar image search
     index = ImageIndex() # Load index
     entries = index.get_all() # Get all entries
     
+    sims = [] # List of similarity scores
+    for path, labels_found in entries.items(): # Loop through entries
+        vec = np.array(encode_labels(labels_found)) # Encode labels from entry
+        score = cosine_similarity([vector], [vec])[0][0] # Compute similarity
+        sims.append((score, path)) # Store result
+    
 
 @main.command()
 def list():
