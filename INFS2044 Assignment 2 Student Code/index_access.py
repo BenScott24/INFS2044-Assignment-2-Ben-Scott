@@ -17,3 +17,7 @@ class IndexAccess:
                     sorted_entries = sorted_entries[:index] + [entry] + sorted_entries[index:] # Insert entry
                     inserted = True # Mark as inserted
                     index = len(sorted_entries) # Exit loop
+            if not inserted: # If it wasn't inserted in the loop
+                sorted_entries.append(entry) # Add to the end
+            
+        return sorted_entries # Return the sorted list
