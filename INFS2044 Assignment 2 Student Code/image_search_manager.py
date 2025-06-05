@@ -17,3 +17,6 @@ class ImageSearchManager:
         entry = ImageEntry(path, labels, vector) # Create new image entry
         self.index.add_entry(entry) # Add entry to index
         print("Detected objects " + ",".join(sorted(labels))) # Print detected objects
+    
+    def search(self, all_mode, labels): # Search index for images
+        return self.index.find_by_labels(all_mode, labels) # Return matching entries
