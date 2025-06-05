@@ -12,4 +12,7 @@ class MatchingEngine:
         for entry in self.entries:
             sim = cosine_similarity([vector], [entry.vector])[0][0] # Calculate similarity
             scores.append((sim, entry)) # Store score and entry
-            
+        
+        scores.sort(key=get_similarity_score, reverse=True) # Sort descending
+
+        
