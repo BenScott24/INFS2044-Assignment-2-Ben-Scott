@@ -12,3 +12,8 @@ class IndexAccess:
         sorted_entries = [] # New list for sorted entries
         for entry in self.entries: # Loop through unsorted entries
             inserted =  False # Track if inserted
+            for index in range(len(sorted_entries)): # Find correct position
+                if entry.path < sorted_entries[index].path:
+                    sorted_entries = sorted_entries[:index] + [entry] + sorted_entries[index:] # Insert entry
+                    inserted = True # Mark as inserted
+                    index = len(sorted_entries) # Exit loop
