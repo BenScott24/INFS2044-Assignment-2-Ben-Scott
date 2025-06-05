@@ -28,6 +28,9 @@ def search(labels, all_mode, some_mode): # Search function
     if not all_mode and not some_mode: # Ensure mode is selected
         print("Use either --all or --some") # Print message
         return
+    all_mode = all_mode or not some_mode # Default to all if not specified
+    index = ImageIndex() # Load index
+    results = index.search(all_mode, labels) # Search for matches
 
 
 @main.command()
