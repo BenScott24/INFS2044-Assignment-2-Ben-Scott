@@ -27,3 +27,7 @@ class ImageIndex:
         if os.path.exists(self.filename): # Check if file exists
             with open(self.filename, "r") as f:
                 self.index = json.load(f) # Load the JSON content into dictionary
+
+    def save(self): # Save index to file
+        with open(self.filename, "w") as f: # Open file for writing
+            json.dump(self.index, f) # Write dictionary to JSON file
