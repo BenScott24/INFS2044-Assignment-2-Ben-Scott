@@ -9,3 +9,8 @@ class ImageSearchManager:
         self.detector = ObjectDetectionEngine() # Create object detection engine
         self.access = ImageAccess() # Create image access object
         self.index = IndexAccess() # Create index access object
+
+    def add_image(self, path): # Add image to index
+        image = self.access.load_image(path) # Load image from file
+        labels = self.detector.detect_objects(image) # Detect objects in image
+        vector = self.detector.encode_labels(labels) # Convert labels into a vector
