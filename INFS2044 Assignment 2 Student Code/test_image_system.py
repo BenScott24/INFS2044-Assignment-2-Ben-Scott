@@ -41,3 +41,13 @@ def test_matching_engine_similarity():
     matcher = MatchingEngine(entries) # Create a matcher using the entries
     result = matcher.find_similar(np.array([1, 0]), 1) # Find top 1 similar entry to vector [1, 0]
     assert result[0][1].path == "img1.jpg" # Expect the most similar to be img1.jpg
+
+# Test function to check getters for path, labels, and vector
+def test_image_entry_properties():
+    vector = np.array([0.5, 0.5]) # Create a test vector
+    entry = ImageEntry("example.jpg", ["tree", "sky"], vector) # Create image entry with path, labels vector
+    assert entry.path == "example.jpg" # Check image path
+    assert entry.labels == ["tree", "sky"] # Check labels
+    assert np.array_equal(entry.vector, vector) # Check vector match
+
+
