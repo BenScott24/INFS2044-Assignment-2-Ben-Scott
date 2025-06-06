@@ -1,0 +1,12 @@
+# Import the ImageEntry class representing image data with path, labels abd feature vector
+from image_entry import ImageEntry
+
+# Import IndexAccess which manages a collection of ImageEntry objects
+from index_access import IndexAccess
+
+# Import MatchingEngine used for calculating the similarity between image vectors
+from matching_engine import MatchingEngine
+
+# Import numpy for handling numerical arrays
+import numpy as np
+
