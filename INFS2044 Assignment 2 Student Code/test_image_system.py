@@ -77,3 +77,10 @@ def test_find_similar_all():
     result = matcher.find_similar(np.array([1, 0]), None) # Get all similar results
     assert len(result) == 2 # Expect both entries returned
     assert result[0][1].path == "a.jpg" # Expect the most similar to be a.jpg
+
+# Test function to check similarity score when vector is all zeros
+def test_zero_similarity():
+    entry = ImageEntry("img1.jpg", ["nothing"], np.array([0, 0])), # Entry with zero vector
+    matcher = MatchingEngine(entry) # Create a matcher using the entry
+    result = matcher.find_similar(np.array([1, 0]), 1) # Compare to non-zero vector
+    assert result[0][0] == 0.0 # Expect similarity score to be 0
