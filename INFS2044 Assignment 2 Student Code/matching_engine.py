@@ -4,7 +4,7 @@ def get_similarity_score(item): # Helper function to get score
     return item[0]
 
 class MatchingEngine:
-    def __int__(self, entries): # Constructor
+    def __init__(self, entries): # Constructor
         self.entries = entries # Store list of image entries 
 
     def find_similar(self, vector, k): # Find similar vectors
