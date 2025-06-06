@@ -50,4 +50,11 @@ def test_image_entry_properties():
     assert entry.labels == ["tree", "sky"] # Check labels
     assert np.array_equal(entry.vector, vector) # Check vector match
 
-
+# Test function to check multiple entries are added to index
+def test_multiple_entries_added():
+    index = IndexAccess() # Create a new image index
+    entry1 = ImageEntry("img1.jpg", ["car"], np.array([1, 0])) # First image entry
+    entry2 = ImageEntry("img2.jpg", ["dog"], np.array([0, 1])) # Second image entry
+    index.add_entry(entry1) # Add first entry
+    index.add_entry(entry2) # Add second entry
+    assert len(index.get_all()) == 2 # Confirm two entries were added
