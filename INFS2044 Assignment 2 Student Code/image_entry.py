@@ -15,4 +15,4 @@ class ImageEntry:
     
     path = property(get_path) # Create a property for path using the getter
     labels = property(get_labels) # Create a property for labels using the getter
-    vector = property(get_labels) # Create a property for vector using the getter
+    vector = property(get_vector) # Create a property for vector using the getter
