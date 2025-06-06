@@ -58,3 +58,12 @@ def test_multiple_entries_added():
     index.add_entry(entry1) # Add first entry
     index.add_entry(entry2) # Add second entry
     assert len(index.get_all()) == 2 # Confirm two entries were added
+
+# Test function for label search expecting no match
+def test_find_by_all_labels():
+    index = IndexAccess() # Create a new image index
+    entry = ImageEntry("img1.jpg", ["car"], np.array([1, 0, 0])) # Entry with only "car" label
+    index.add_entry(entry) # Add the entry
+    result = index.find_by_labels(True, ["car", "person"]) # Search for "car" and "person"
+    assert len(result) == 0 # Expect no match
+    
