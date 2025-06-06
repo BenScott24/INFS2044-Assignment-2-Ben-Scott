@@ -66,4 +66,14 @@ def test_find_by_all_labels():
     index.add_entry(entry) # Add the entry
     result = index.find_by_labels(True, ["car", "person"]) # Search for "car" and "person"
     assert len(result) == 0 # Expect no match
-    
+
+# Test function to return all entries when k is None
+def test_find_similar_all():
+    entries = [
+        ImageEntry("a.jpg", ["one"], np.array([1, 0])), # First entry with vector [1,0]
+        ImageEntry("b.jpg", ["two"], np.array([0, 1]))  # Second entry with vector [0, 1]
+    ]
+    matcher = MatchingEngine(entries) # Create a matcher using the entries
+    result = matcher.find_similar(np.array([1, 0]), None) # Get all similar results
+    assert len(result) == 2 # Expect both entries returned
+    assert result[0][1].path == "a.jpg" # Expect the most similar to be a.jpg
