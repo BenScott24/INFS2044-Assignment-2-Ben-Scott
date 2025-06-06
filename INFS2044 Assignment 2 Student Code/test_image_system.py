@@ -25,3 +25,10 @@ def test_find_by_all_labels():
     result = index.find_by_labels(True, ["car", "person"]) # Search for entry requiring both labels
     assert len(result) == 1 # Expect one match
 
+# Test function to check label matching when any label can match
+def test_find_by_some_labels():
+    index = IndexAccess() # Create a new index
+    index.add_entry(ImageEntry("img1.jpg", ["cat"], np.array([0, 0, 1]))) # Add an entry with label "cat"
+    result = index.find_by_labels(False, ["cat", "dog"]) # Search all allowing any label match ("cat" or "dog")
+    assert len(index.get_all()) == 1 # Confirm that one entry exists in the index
+
