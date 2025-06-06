@@ -38,6 +38,6 @@ def test_matching_engine_similarity():
         ImageEntry("img1.jpg", ["car"], np.array([1, 0])), # First entry with vector [1,0]
         ImageEntry("img2.jpg", ["bike"], np.array([0,1]))  # Second entry with vector [0, 1]
     ]
-    matcher = MatchingEngine(entries) # Create a matcher using the entries
+    matcher = MatchingEngine() # Create a matcher using the entries
     result = matcher.find_similar(np.array([1, 0]), 1) # Find top 1 similar entry to vector [1, 0]
     assert result[0][1].path == "img1.jpg" # Expect the most similar to be img1.jpg
