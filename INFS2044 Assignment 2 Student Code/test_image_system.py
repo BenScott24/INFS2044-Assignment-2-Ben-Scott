@@ -17,4 +17,11 @@ def test_add_entry():
     index.add_entry(entry1) # Add the entry to the index
     assert len(index.get_all()) == 1 # Verify that exactly one entry was added
 
-    
+# Test function to check label matching when all labels must match
+def test_find_by_all_labels():
+    index = IndexAccess() # Create a new index
+    entry = ImageEntry("img1.jpg", ["car", "person"], np.array([1, 1, 0])) # Create entry with with two labels
+    index.add_entry(entry) # Add it to the index
+    result = index.find_by_labels(True, ["car", "person"]) # Search for entry requiring both labels
+    assert len(result) == 1 # Expect one match
+
