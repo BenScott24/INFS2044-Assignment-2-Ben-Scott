@@ -32,3 +32,12 @@ def test_find_by_some_labels():
     result = index.find_by_labels(False, ["cat", "dog"]) # Search all allowing any label match ("cat" or "dog")
     assert len(index.get_all()) == 1 # Confirm that one entry exists in the index
 
+# Test function for MatchingEngine to verify similarity calculation
+def test_matching_engine_similarity():
+    entries = [
+        ImageEntry("img1.jpg", ["car"], np.array([1, 0])), # First entry with vector [1,0]
+        ImageEntry("img2.jpg", ["bike"], np.array([0,1]))  # Second entry with vector [0, 1]
+    ]
+    matcher = MatchingEngine(entries) # Create a matcher using the entries
+    result = matcher.find_similar(np.array([1, 0]), 1) # Find top 1 similar entry to vector [1, 0]
+    assert result[0][1].path == "img1.jpg" # Expect the most similar to be img1.jpg
